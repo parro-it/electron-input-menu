@@ -1,6 +1,6 @@
 {
   "name": "electron-input-menu",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "repository": "parro-it/electron-input-menu",
   "license": "MIT",
@@ -14,7 +14,10 @@
     "node": ">=5"
   },
   "eslintConfig": {
-    "extends":  ["js", "features"]
+    "extends": [
+      "js",
+      "features"
+    ]
   },
   "devDependencies": {
     "electron-prebuilt": "^0.36.10",
