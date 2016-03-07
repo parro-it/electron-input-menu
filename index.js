@@ -37,7 +37,6 @@ module.exports = function inputMenu() {
     let node = e.target;
 
     while (node) {
-      debugger
       if (node.matches('input, textarea, contenteditable')) {
         menu.popup(remote.getCurrentWindow());
         break;
