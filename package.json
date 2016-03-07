@@ -6,18 +6,21 @@
   "license": "MIT",
   "author": "parro-it",
   "scripts": {
-    "test": "eslint . && node test | faucet"
+    "test": "eslint .",
+    "start": "electron test.js"
   },
   "keywords": [],
   "engines": {
     "node": ">=5"
   },
   "eslintConfig": {
-    "extends": "js"
+    "extends":  ["js", "features"]
   },
   "devDependencies": {
+    "electron-prebuilt": "^0.36.10",
     "eslint": "^1.10.3",
-    "eslint-config-js": "^2.0.2",
+    "eslint-config-features": "^1.1.5",
+    "eslint-config-js": "^4.0.0",
     "faucet": "0.0.1",
     "tape": "^4.2.2"
   },

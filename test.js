@@ -1,8 +1,14 @@
-const test = require('tape');
-const electronInputMenu = require('./');
+'use strict';
+const electron = require('electron');
 
-test('it work!', t => {
-  const result = electronInputMenu();
-  t.equal(result, 42);
-  t.end();
+electron.app.on('ready', () => {
+  const win = new electron.BrowserWindow({
+    show: true
+  });
+
+  win.webContents.executeJavaScript(`
+    require('${__dirname}')();
+  `);
+
+  win.loadURL('https://google.com');
 });
