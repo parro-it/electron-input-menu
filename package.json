@@ -1,0 +1,27 @@
+{
+  "name": "electron-input-menu",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "parro-it/electron-input-menu",
+  "license": "MIT",
+  "author": "parro-it",
+  "scripts": {
+    "test": "eslint . && node test | faucet"
+  },
+  "keywords": [],
+  "engines": {
+    "node": ">=5"
+  },
+  "eslintConfig": {
+    "extends": "js"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-js": "^2.0.2",
+    "faucet": "0.0.1",
+    "tape": "^4.2.2"
+  },
+  "files": [
+    "index.js"
+  ]
+}
