@@ -1,10 +1,6 @@
 'use strict';
 
-const electron = require('electron');
-const remote = electron.remote;
-const Menu = remote.Menu;
-
-const menu = Menu.buildFromTemplate([{
+const menuTemplate = [{
   label: 'Undo',
   role: 'undo',
 }, {
@@ -26,22 +22,18 @@ const menu = Menu.buildFromTemplate([{
 }, {
   label: 'Select all',
   role: 'selectall',
-}]);
+}];
 
 
-module.exports = function inputMenu() {
-  document.body.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+module.exports = function inputMenu(ctx, next) {
+  let node = ctx.elm;
 
-    let node = e.target;
-
-    while (node) {
-      if (node.matches('input, textarea, contenteditable')) {
-        menu.popup(remote.getCurrentWindow());
-        break;
-      }
-      node = node.parentElement;
+  while (node) {
+    if (node.matches('input, textarea, contenteditable')) {
+      [].push.apply(ctx.menu, menuTemplate);
+      break;
     }
-  });
+    node = node.parentElement;
+  }
+  next();
 };

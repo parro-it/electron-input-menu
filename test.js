@@ -6,9 +6,5 @@ electron.app.on('ready', () => {
     show: true
   });
 
-  win.webContents.executeJavaScript(`
-    require('${__dirname}')();
-  `);
-
-  win.loadURL('https://google.com');
+  win.loadURL('file://' + __dirname + '/example.html');
 });
