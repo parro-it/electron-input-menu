@@ -31,7 +31,7 @@ To use input context menu, you have to require `electron-contextmenu-middleware`
 
 * [electron-contextmenu-middleware](https://github.com/parro-it/electron-contextmenu-middleware) - Build `electron` context menus composing multiple middlewares functions.
 
-* [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like \"inspect element\" context-menu.
+* [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like "inspect element" context-menu.
 
 
 
