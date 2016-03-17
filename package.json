@@ -1,7 +1,7 @@
 {
   "name": "electron-input-menu",
   "version": "1.0.0",
-  "description": "",
+  "description": "Context menu for electron input elements.",
   "repository": "parro-it/electron-input-menu",
   "license": "MIT",
   "author": "parro-it",
