@@ -29,7 +29,7 @@ module.exports = function inputMenu(ctx, next) {
   let node = ctx.elm;
 
   while (node) {
-    if (node.matches('input, textarea, contenteditable')) {
+    if (node.matches('input, textarea, [contenteditable]')) {
       [].push.apply(ctx.menu, menuTemplate);
       break;
     }
