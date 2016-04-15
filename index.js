@@ -36,6 +36,9 @@ shortcut.register('CmdOrCtrl+V', () => action('paste'));
 shortcut.register('CmdOrCtrl+X', () => action('cut'));
 shortcut.register('CmdOrCtrl+A', () => action('selectAll'));
 
+shortcut.register('CmdOrCtrl+Z', () => action('undo'));
+shortcut.register('Shift+CmdOrCtrl+Z', () => action('redo'));
+
 module.exports = function inputMenu(ctx, next) {
   let node = ctx.elm;
 
