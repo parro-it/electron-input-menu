@@ -4,15 +4,12 @@
   "description": "Context menu for electron input elements.",
   "repository": "parro-it/electron-input-menu",
   "license": "MIT",
-  "author": "parro-it",
+  "author": "andrea@parro.it",
   "scripts": {
-    "test": "eslint .",
+    "test": "xo",
     "start": "electron test.js"
   },
-  "keywords": [],
-  "engines": {
-    "node": ">=4"
-  },
+  "keywords": ["electron", "input", "contextmenu", "shortcuts"],
   "eslintConfig": {
     "extends": [
       "js",
@@ -22,13 +19,15 @@
   "devDependencies": {
     "electron-contextmenu-middleware": "^1.0.0",
     "electron-prebuilt": "^0.36.10",
-    "eslint": "^1.10.3",
-    "eslint-config-features": "^1.1.5",
-    "eslint-config-js": "^4.0.0",
-    "faucet": "0.0.1",
-    "tape": "^4.2.2"
+    "xo": "^0.15.1"
   },
   "files": [
     "index.js"
-  ]
+  ],
+  "xo": {
+    "envs": [
+      "browser",
+      "node"
+    ]
+  },
 }
