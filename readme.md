@@ -16,7 +16,7 @@ npm install --save electron-input-menu
 
 This module expose a middleware for [electron-contextmenu-middleware](https://github.com/parro-it/electron-contextmenu-middleware).
 
-To use input context menu, you have to require `electron-contextmenu-middleware` and then mount this module as a middleware.
+To use input context menu, you have to require this module and `electron-contextmenu-middleware` in `renderer` process and then mount this module as a middleware.
 
 ```js
   const inputMenu = require('electron-input-menu');
@@ -26,6 +26,18 @@ To use input context menu, you have to require `electron-contextmenu-middleware`
 
   context.activate();
 ```
+
+# Keyboard shortcuts
+
+`electron-input-menu` can also register shortcuts on DOM `document` object to handle copy, paste, cut, selectAll, undo and redo action. This is useful if your app doesn't provide an "Edit" menu that can handle this shortcuts.
+
+To activate the shortcuts, call the `registerShortcuts` method in renderer process.
+
+```js
+  const inputMenu = require('electron-input-menu');
+  inputMenu.registerShortcuts();
+```
+
 
 # Related projects
 

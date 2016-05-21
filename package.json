@@ -30,8 +30,5 @@
   },
   "files": [
     "index.js"
-  ],
-  "dependencies": {
-    "electron-localshortcut": "^0.6.0"
-  }
+  ]
 }
