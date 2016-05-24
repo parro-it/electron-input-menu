@@ -86,10 +86,10 @@ function handleInputShortcuts(evt) {
 
 function registerShortcuts() {
 	if (document.body) {
-		document.body.addEventListener('onkeydown', handleInputShortcuts);
+		document.body.addEventListener('keydown', handleInputShortcuts);
 	} else {
 		document.addEventListener('DOMContentLoaded', () => {
-			document.body.addEventListener('onkeydown', handleInputShortcuts);
+			document.body.addEventListener('keydown', handleInputShortcuts);
 		});
 	}
 }
