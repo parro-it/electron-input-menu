@@ -39,74 +39,80 @@ function action(name, evt) {
 	return false;
 }
 
-function isEditable(node) {
+function defaultIsEditable(node) {
 	return node.matches('input, textarea, [contenteditable]');
 }
 
-function handleInputShortcuts(evt) {
-	const c = evt.keyCode;
-	const ctrlDown = evt.ctrlKey || evt.metaKey; // OSX support
-	const altDown = evt.altKey;
-	const shiftDown = evt.shiftKey;
+function mkInputMenu(isEditable = defaultIsEditable) {
+	function inputMenu(ctx, next) {
+		let node = ctx.elm;
 
-	if (altDown) {
-		return true;
-	}
-
-	if (!isEditable(evt.target)) {
-		return true;
-	}
-
-	if (ctrlDown && !shiftDown && c === DOM_VK_C) {
-		return action('copy', evt);
-	}
-
-	if (ctrlDown && !shiftDown && c === DOM_VK_V) {
-		return action('paste', evt);
-	}
-
-	if (ctrlDown && !shiftDown && c === DOM_VK_X) {
-		return action('cut', evt);
-	}
-
-	if (ctrlDown && !shiftDown && c === DOM_VK_A) {
-		return action('selectAll', evt);
-	}
-
-	if (ctrlDown && !shiftDown && c === DOM_VK_Z) {
-		return action('undo', evt);
-	}
-
-	if (ctrlDown && shiftDown && c === DOM_VK_Z) {
-		return action('redo', evt);
-	}
-
-	return true;
-}
-
-function registerShortcuts() {
-	if (document.body) {
-		document.body.addEventListener('keydown', handleInputShortcuts);
-	} else {
-		document.addEventListener('DOMContentLoaded', () => {
-			document.body.addEventListener('keydown', handleInputShortcuts);
-		});
-	}
-}
-
-function inputMenu(ctx, next) {
-	let node = ctx.elm;
-
-	while (node) {
-		if (isEditable(node)) {
-			[].push.apply(ctx.menu, menuTemplate);
-			break;
+		while (node) {
+			if (isEditable(node)) {
+				[].push.apply(ctx.menu, menuTemplate);
+				break;
+			}
+			node = node.parentElement;
 		}
-		node = node.parentElement;
+		next();
 	}
-	next();
+
+	function handleInputShortcuts(evt) {
+		const c = evt.keyCode;
+		const ctrlDown = evt.ctrlKey || evt.metaKey; // OSX support
+		const altDown = evt.altKey;
+		const shiftDown = evt.shiftKey;
+
+		if (altDown) {
+			return true;
+		}
+
+		if (!isEditable(evt.target)) {
+			return true;
+		}
+
+		if (ctrlDown && !shiftDown && c === DOM_VK_C) {
+			return action('copy', evt);
+		}
+
+		if (ctrlDown && !shiftDown && c === DOM_VK_V) {
+			return action('paste', evt);
+		}
+
+		if (ctrlDown && !shiftDown && c === DOM_VK_X) {
+			return action('cut', evt);
+		}
+
+		if (ctrlDown && !shiftDown && c === DOM_VK_A) {
+			return action('selectAll', evt);
+		}
+
+		if (ctrlDown && !shiftDown && c === DOM_VK_Z) {
+			return action('undo', evt);
+		}
+
+		if (ctrlDown && shiftDown && c === DOM_VK_Z) {
+			return action('redo', evt);
+		}
+
+		return true;
+	}
+
+	function registerShortcuts() {
+		if (document.body) {
+			document.body.addEventListener('keydown', handleInputShortcuts);
+		} else {
+			document.addEventListener('DOMContentLoaded', () => {
+				document.body.addEventListener('keydown', handleInputShortcuts);
+			});
+		}
+	}
+
+	inputMenu.registerShortcuts = registerShortcuts;
+	return inputMenu;
 }
 
-inputMenu.registerShortcuts = registerShortcuts;
-
-module.exports = inputMenu;
+const defaultInputMenu = mkInputMenu();
+defaultInputMenu.mkInputMenu = mkInputMenu;
+defaultInputMenu.defaultIsEditable = defaultIsEditable;
+module.exports = defaultInputMenu;
