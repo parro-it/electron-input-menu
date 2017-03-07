@@ -6,8 +6,11 @@
     <script>
     const context = require('electron-contextmenu-middleware');
     const inputMenu = require('.');
+    const isEditable = node =>
+      inputMenu.defaultIsEditable(node) &&
+      !node.dataset.nomenu;
 
-    context.use(inputMenu);
+    context.use(inputMenu.mkInputMenu(isEditable));
 
     context.use((ctx, next) => {
       ctx.menu.push({
@@ -24,6 +27,8 @@
 
   <body>
     <input type="text">
+    <input type="text" placeholder="no input menu here" data-nomenu="1">
+
     <h1>Hola</h1>
   </body>
 </html>
