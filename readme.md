@@ -1,5 +1,7 @@
 # electron-input-menu
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/parro-it/electron-input-menu.svg)](https://greenkeeper.io/)
+
 > Context menu for [electron](https://github.com/atom/electron) input elements.
 
 [![Travis Build Status](https://img.shields.io/travis/parro-it/electron-input-menu.svg)](http://travis-ci.org/parro-it/electron-input-menu)
