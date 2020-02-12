@@ -24,7 +24,7 @@
   "devDependencies": {
     "electron-contextmenu-middleware": "^1.0.0",
     "electron-prebuilt": "^1.1.1",
-    "xo": "^0.17.1"
+    "xo": "^0.26.0"
   },
   "files": [
     "index.js"
